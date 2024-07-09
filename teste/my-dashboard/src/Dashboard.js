@@ -1,14 +1,8 @@
 // Dashboard.js
 import React from 'react';
 import { Box, Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText, Avatar, Badge } from '@mui/material';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import PersonIcon from '@mui/icons-material/Person';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SettingsIcon from '@mui/icons-material/Settings';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
 import { styled } from '@mui/material/styles';
-import { Link } from 'react-router-dom'; 
 import MenuBar from './MenuBar';
 
 import {

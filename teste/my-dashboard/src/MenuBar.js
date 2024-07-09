@@ -1,15 +1,14 @@
-// MenuBar.js
 import React from 'react';
-import { Box, Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText, Avatar, Badge } from '@mui/material';
+import { Box, Paper, Typography, List, ListItem, ListItemIcon, ListItemText, Avatar, Badge } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PersonIcon from '@mui/icons-material/Person';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import HomeIcon from '@mui/icons-material/Home';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom'; 
-
 
 const Sidebar = styled(Paper)({
   height: '100vh',
@@ -17,7 +16,6 @@ const Sidebar = styled(Paper)({
   backgroundColor: '#6C7A52',
   color: 'white',
 });
-
 
 const MenuBar = () => {
   return (
@@ -59,6 +57,12 @@ const MenuBar = () => {
             </ListItemIcon>
             <ListItemText primary="Configurações" />
           </ListItem>
+          <ListItem button component={Link} to="/dashboard"> {/* Link para "/menu" */}
+            <ListItemIcon>
+              <HomeIcon style={{ color: 'white' }} />
+            </ListItemIcon>
+            <ListItemText primary="Menu Principal" />
+          </ListItem>
           <ListItem button>
             <ListItemIcon>
               <ExitToAppIcon style={{ color: 'white' }} />
@@ -67,8 +71,8 @@ const MenuBar = () => {
           </ListItem>
         </List>
       </Sidebar>
-      </Box>
-    );
+    </Box>
+  );
 };
 
 export default MenuBar;

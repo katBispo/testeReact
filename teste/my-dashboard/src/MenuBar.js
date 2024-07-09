@@ -7,6 +7,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import HomeIcon from '@mui/icons-material/Home';
+import AccessTimeIcon from '@mui/icons-material/AccessTime'; // Ícone para "Histórico de Acessos ao Laboratório"
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom'; 
 
@@ -26,6 +27,12 @@ const MenuBar = () => {
           <Typography variant="h6">Kateriny B.</Typography>
         </Box>
         <List>
+        <ListItem button component={Link} to="/dashboard"> {/* Link para "/menu" */}
+            <ListItemIcon>
+              <HomeIcon style={{ color: 'white' }} />
+            </ListItemIcon>
+            <ListItemText primary="Menu Principal" />
+          </ListItem>
           <ListItem button>
             <ListItemIcon>
               <DashboardIcon style={{ color: 'white' }} />
@@ -57,11 +64,12 @@ const MenuBar = () => {
             </ListItemIcon>
             <ListItemText primary="Configurações" />
           </ListItem>
-          <ListItem button component={Link} to="/dashboard"> {/* Link para "/menu" */}
+          
+          <ListItem button component={Link} to="/AcessHistory"> {/* Link para "/historico-acessos" */}
             <ListItemIcon>
-              <HomeIcon style={{ color: 'white' }} />
+              <AccessTimeIcon style={{ color: 'white' }} />
             </ListItemIcon>
-            <ListItemText primary="Menu Principal" />
+            <ListItemText primary="Histórico de Entradas" />
           </ListItem>
           <ListItem button>
             <ListItemIcon>

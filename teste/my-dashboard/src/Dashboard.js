@@ -1,10 +1,7 @@
-// Dashboard.js
 import React from 'react';
-import { Box, Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText, Avatar, Badge } from '@mui/material';
-
+import { Box, Grid, Paper, Typography, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuBar from './MenuBar';
-
 import {
   BarChart,
   CartesianGrid,
@@ -41,22 +38,27 @@ const dataBar = [
 
 const dataPie = [
   { name: 'Tratado', value: 400 },
-  { name: 'Não Tratado', value: 300 },
+  { name: 'Não Tratado', value: 200 },
   { name: 'Em andamento', value: 300 },
   { name: 'Outros', value: 200 },
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
+const accessHistory = [
+  { name: 'João Silva', id: '#123', time: '08:00' },
+  { name: 'Maria Oliveira', id: '#456', time: '09:15' },
+  { name: 'Carlos Santos', id: '#789', time: '10:30' },
+  { name: 'Ana Souza', id: '#012', time: '11:45' },
+];
 
 const Dashboard = () => {
   return (
     <Box display="flex">
       <MenuBar />
-
       <MainContent flexGrow={1}>
         <Typography variant="h4" gutterBottom>Seus KPI's críticos</Typography>
-        	        <Grid container spacing={2}>
+        <Grid container spacing={2}>
           <Grid item xs={3}>
             <Paper elevation={3} style={{ padding: '16px', textAlign: 'center' }}>
               <Typography variant="h5">20L</Typography>
@@ -125,8 +127,8 @@ const Dashboard = () => {
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={2}>
-          <Grid item xs={4}>
-            <Paper elevation={3} style={{ padding: '16px' }}>
+          <Grid item xs={5}>
+            <Paper elevation={5} style={{ padding: '16px' }}>
               <Typography variant="h6">Resumo de Resíduos</Typography>
               <Typography variant="body2">+5% comparado ao Mês Anterior</Typography>
               <PieChart width={400} height={400}>
@@ -147,8 +149,20 @@ const Dashboard = () => {
               </PieChart>
             </Paper>
           </Grid>
+          <Grid item xs={1}></Grid> {/* Espaço vazio */}
+          <Grid item xs={4}>
+            <Paper elevation={3} style={{ padding: '16px' }}>
+              <Typography variant="h6">Histórico de Acessos ao Laboratório</Typography>
+              <List>
+                {accessHistory.map((access, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={access.name} secondary={`ID: ${access.id} - Horário: ${access.time}`} />
+                  </ListItem>
+                ))}
+              </List>
+            </Paper>
+          </Grid>
         </Grid>
-     
       </MainContent>
     </Box>
   );

@@ -3,6 +3,9 @@ import { Box, Paper, Typography, Grid, TextField, Button, Avatar, IconButton } f
 import { styled } from '@mui/material/styles';
 import EditIcon from '@mui/icons-material/Edit';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import MenuBar from './MenuBar'; 
+
+
 
 const MainContent = styled(Box)({
   padding: '16px',
@@ -29,6 +32,9 @@ const ProfilePage = () => {
   };
 
   return (
+
+    <Box display="flex">
+      <MenuBar />
     <MainContent>
       <Grid container spacing={2}>
         <Grid item xs={12} md={4}>
@@ -133,6 +139,7 @@ const ProfilePage = () => {
         </Grid>
       </Grid>
     </MainContent>
+    </Box>
   );
 };
 

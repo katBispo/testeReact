@@ -9,6 +9,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom'; 
+import MenuBar from './MenuBar';
 
 import {
   BarChart,
@@ -57,51 +58,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const Dashboard = () => {
   return (
     <Box display="flex">
-      <Sidebar elevation={3}>
-        <Box display="flex" flexDirection="column" alignItems="center" mb={4}>
-          <Avatar alt="Kateriny B." src="https://via.placeholder.com/150" sx={{ width: 56, height: 56 }} />
-          <Typography variant="h6">Kateriny B.</Typography>
-        </Box>
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <DashboardIcon style={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Dashboards" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <ListAltIcon style={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Cadastros" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <PersonIcon style={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Listas" />
-          </ListItem>
-          <ListItem button component={Link} to="/perfil"> {/* Link para "/perfil" */}
-            <ListItemIcon>
-              <NotificationsIcon style={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Perfil" />
-            <Badge badgeContent={3} color="secondary" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <SettingsIcon style={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Configurações" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <ExitToAppIcon style={{ color: 'white' }} />
-            </ListItemIcon>
-            <ListItemText primary="Sair" />
-          </ListItem>
-        </List>
-      </Sidebar>
+      <MenuBar />
 
       <MainContent flexGrow={1}>
         <Typography variant="h4" gutterBottom>Seus KPI's críticos</Typography>

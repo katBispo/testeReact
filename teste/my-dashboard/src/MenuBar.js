@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Paper, Typography, List, ListItem, ListItemIcon, ListItemText, Avatar, Badge } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Paper, Typography, List, ListItem, ListItemIcon, ListItemText, Avatar, Badge, Dialog, DialogContent, Button } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import PersonIcon from '@mui/icons-material/Person';
@@ -19,6 +19,40 @@ const Sidebar = styled(Paper)({
 });
 
 const MenuBar = () => {
+  const [openDashboards, setOpenDashboards] = useState(false);
+  const [openCadastros, setOpenCadastros] = useState(false);
+  
+
+  const [openListas, setOpenListas] = useState(false);
+
+
+
+  const handleOpenDashboards = () => {
+    setOpenDashboards(true);
+  };
+
+  const handleCloseDashboards = () => {
+    setOpenDashboards(false);
+  };
+
+  const handleOpenCadastros = () => {
+    setOpenCadastros(true);
+  };
+
+  const handleCloseCadastros = () => {
+    setOpenCadastros(false);
+  };
+
+
+  
+  const handleOpenListas = () => {
+    setOpenListas(true);
+  };
+
+  const handleCloseListas = () => {
+    setOpenListas(false);
+  };
+
   return (
     <Box display="flex">
       <Sidebar elevation={3}>
@@ -27,27 +61,27 @@ const MenuBar = () => {
           <Typography variant="h6">Kateriny B.</Typography>
         </Box>
         <List>
-        <ListItem button component={Link} to="/dashboard"> {/* Link para "/menu" */}
+          <ListItem button component={Link} to="/dashboard"> {/* Link para "/menu" */}
             <ListItemIcon>
               <HomeIcon style={{ color: 'white' }} />
             </ListItemIcon>
             <ListItemText primary="Menu Principal" />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={handleOpenDashboards}>
             <ListItemIcon>
               <DashboardIcon style={{ color: 'white' }} />
             </ListItemIcon>
             <ListItemText primary="Dashboards" />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={handleOpenCadastros}>
             <ListItemIcon>
               <ListAltIcon style={{ color: 'white' }} />
             </ListItemIcon>
             <ListItemText primary="Cadastros" />
           </ListItem>
-          <ListItem button>
+          <ListItem button  onClick={handleOpenListas}>
             <ListItemIcon>
-              <PersonIcon style={{ color: 'white' }} />
+              <DashboardIcon style={{ color: 'white' }} />
             </ListItemIcon>
             <ListItemText primary="Listas" />
           </ListItem>
@@ -64,7 +98,6 @@ const MenuBar = () => {
             </ListItemIcon>
             <ListItemText primary="Configurações" />
           </ListItem>
-          
           <ListItem button component={Link} to="/AcessHistory"> {/* Link para "/historico-acessos" */}
             <ListItemIcon>
               <AccessTimeIcon style={{ color: 'white' }} />
@@ -79,6 +112,38 @@ const MenuBar = () => {
           </ListItem>
         </List>
       </Sidebar>
+      
+      <Dialog open={openDashboards} onClose={handleCloseDashboards}>
+        <DialogContent>
+          <Typography variant="h6" gutterBottom>Selecione um Dashboard</Typography>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-reagentes">Dashboard Reagentes</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-pessoas">Dashboard Pessoas</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-residuos">Dashboard Resíduos</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-acessos">Dashboard Acessos</Button>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openCadastros} onClose={handleCloseCadastros}>
+        <DialogContent>
+          <Typography variant="h6" gutterBottom>Selecione um Cadastro</Typography>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-reagentes">Cadastro Reagentes</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-pessoas">Cadastro Pessoas</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-residuos">Cadastro Resíduos</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-acessos">Cadastro Acessos</Button>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openListas} onClose={handleCloseListas}>
+        <DialogContent>
+          <Typography variant="h6" gutterBottom>Selecione uma Lista</Typography>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-reagentes">Lista Reagentes</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-pessoas">Lista Pessoas</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-residuos">Lista Resíduos</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-acessos">Lista Acessos</Button>
+        </DialogContent>
+      </Dialog>
+     
+
     </Box>
   );
 };

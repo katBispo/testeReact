@@ -128,7 +128,7 @@ const MenuBar = () => {
           <Typography variant="h6" gutterBottom>Selecione um Cadastro</Typography>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-reagentes">Cadastro Reagentes</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-pessoas">Cadastro Pessoas</Button>
-          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-residuos">Cadastro Resíduos</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastroResiduo">Cadastro Resíduos</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-acessos">Cadastro Acessos</Button>
         </DialogContent>
       </Dialog>

@@ -120,16 +120,20 @@ const MenuBar = () => {
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-pessoas">Dashboard Pessoas</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-residuos">Dashboard Resíduos</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-acessos">Dashboard Acessos</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/dashboard-equipamentos">Dashboard Equipamentos</Button>
+
         </DialogContent>
       </Dialog>
 
       <Dialog open={openCadastros} onClose={handleCloseCadastros}>
         <DialogContent>
           <Typography variant="h6" gutterBottom>Selecione um Cadastro</Typography>
-          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-reagentes">Cadastro Reagentes</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastroReagente">Cadastro Reagentes</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-pessoas">Cadastro Pessoas</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastroResiduo">Cadastro Resíduos</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-acessos">Cadastro Acessos</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/cadastro-equipamentos">Cadastro Equipamentos</Button>
+
         </DialogContent>
       </Dialog>
 
@@ -140,6 +144,8 @@ const MenuBar = () => {
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-pessoas">Lista Pessoas</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-residuos">Lista Resíduos</Button>
           <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-acessos">Lista Acessos</Button>
+          <Button variant="contained" color="primary" style={{ margin: '8px' }} component={Link} to="/Lista-equipamentos">Lista Equipamentos</Button>
+
         </DialogContent>
       </Dialog>
      

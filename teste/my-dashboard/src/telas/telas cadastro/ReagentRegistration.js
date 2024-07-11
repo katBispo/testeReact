@@ -6,11 +6,17 @@ import { jsPDF } from 'jspdf';
 import MenuBar from '../MenuBar';
 import MuiAlert from '@mui/material/Alert';
 
-const WasteRegistrationForm = () => {
+const ReagentRegistration = () => {
   const [wasteName, setWasteName] = useState('');
   const [generationDate, setGenerationDate] = useState(null);
-  const [wasteType, setWasteType] = useState('');
-  const [casNumber, setCasNumber] = useState('');
+  const [reagentName, setReagentName] = useState('');
+  const [reagentState, setReagentState] = useState('');
+  const [reagentType, setReagentType] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [reagentLot, setReagentLot] = useState('');
+
+
+
   const [classification, setClassification] = useState({
     Corrosivo: false,
     Inflamável: false,
@@ -25,12 +31,13 @@ const WasteRegistrationForm = () => {
   const handleRegister = () => {
     // Função para lidar com o envio do formulário
     console.log({
-      wasteName,
+      reagentName,
       generationDate,
-      wasteType,
-      casNumber,
       classification,
       responsible,
+      reagentState,
+      reagentType,
+      reagentLot,
     });
     setOpenSnackbar(true);
   };
@@ -47,8 +54,6 @@ const WasteRegistrationForm = () => {
     doc.text('Cadastro de Resíduos', 10, 10);
     doc.text(`Nome do Resíduo: ${wasteName}`, 10, 20);
     doc.text(`Data da Geração: ${generationDate ? generationDate.toLocaleDateString() : ''}`, 10, 30);
-    doc.text(`Tipo de Resíduo: ${wasteType}`, 10, 40);
-    doc.text(`Número CAS: ${casNumber}`, 10, 50);
     doc.text('Classificação:', 10, 60);
     Object.keys(classification).forEach((key, index) => {
       if (classification[key]) {
@@ -81,16 +86,24 @@ const WasteRegistrationForm = () => {
               <TextField
                 label="Nome do Reagente"
                 fullWidth
-                value={wasteName}
-                onChange={(e) => setWasteName(e.target.value)}
+                value={reagentName}
+                onChange={(e) => setReagentName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 label="Quantidade"
                 fullWidth
-                value={wasteName}
-                onChange={(e) => setWasteName(e.target.value)}
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Lote"
+                fullWidth
+                value={reagentLot}
+                onChange={(e) => setReagentLot(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -108,8 +121,8 @@ const WasteRegistrationForm = () => {
                 select
                 label="Tipo de Reagente"
                 fullWidth
-                value={wasteType}
-                onChange={(e) => setWasteType(e.target.value)}
+                value={reagentType}
+                onChange={(e) => setReagentType(e.target.value)}
               >
                 <MenuItem value="Sal">Sal</MenuItem>
                 <MenuItem value="Ácido">Ácido</MenuItem>
@@ -124,8 +137,8 @@ const WasteRegistrationForm = () => {
                 select
                 label="Estado Reagente"
                 fullWidth
-                value={wasteType}
-                onChange={(e) => setWasteType(e.target.value)}
+                value={reagentState}
+                onChange={(e) => setReagentState(e.target.value)}
               >
                 <MenuItem value="Sólido">Sólido</MenuItem>
                 <MenuItem value="Líquido">Líquido</MenuItem>
@@ -181,11 +194,11 @@ const WasteRegistrationForm = () => {
       </div>
       <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
         <MuiAlert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-          Resíduo cadastrado com sucesso!
+          Reagente cadastrado com sucesso!
         </MuiAlert>
       </Snackbar>
     </div>
   );
 };
 
-export default WasteRegistrationForm;
+export default ReagentRegistration;

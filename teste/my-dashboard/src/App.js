@@ -5,7 +5,8 @@ import Dashboard from './telas/Dashboard';
 import ProfilePage from './telas/ProfilePage';
 import WasteRegistrationForm from './telas/telas cadastro/WasteRegistrationForm';
 import ReagentRegistration from './telas/telas cadastro/ReagentRegistration';
-
+import UserRegistration from './telas/telas cadastro/UserResgistration';
+import EquipmentRegistration from './telas/telas cadastro/EquipmentRegistration';
 
 const App = () => {
   return (
@@ -16,6 +17,10 @@ const App = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="/cadastroResiduo" element={<WasteRegistrationForm/>}/>
         <Route path="/cadastroReagente" element={<ReagentRegistration/>}/>
+        <Route path="/cadastroUsuario" element={<UserRegistration/>}/>
+        <Route path="/cadastroEquipamento" element={<EquipmentRegistration/>}/>
+
+
 
       </Routes>
     </Router>

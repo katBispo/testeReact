@@ -1,39 +1,32 @@
 import React, { useState } from 'react';
-import { TextField, Button, Grid, Paper, Typography, MenuItem, Snackbar } from '@mui/material';
-import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { TextField, Button, Grid, Paper, Typography, Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import MenuBar from '../MenuBar';
+import api from '.../api'; // Importe o serviço de API
 
 const EquipmentRegistration = () => {
   const [equipmentName, setEquipmentName] = useState('');
-  const [CRQNumber, setCRQNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [generationDate, setGenerationDate] = useState(null);
-  const [userType, setUserType] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [equipmentModel, setEquipmentModel] = useState('');
+  const [brandEquipment, setBrandEquipment] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleRegister = () => {
-    // Verifica se as senhas são iguais
-    if (password !== confirmPassword) {
-      alert('As senhas não coincidem. Por favor, verifique.');
-      return;
-    }
+    // Dados do formulário
+    const newEquipment = {
+      nome: equipmentName,
+      modelo: equipmentModel,
+      marca: brandEquipment,
+    };
 
-    // Lógica para lidar com o envio do formulário
-    console.log({
-      equipmentName,
-      CRQNumber,
-      generationDate,
-      email,
-      userType,
-      cpf,
-      password,
-    });
-    setOpenSnackbar(true);
+    // Enviar dados para o backend usando o serviço de API
+    api.post('equipamentos', newEquipment)
+      .then(response => {
+        console.log(response.data);
+        setOpenSnackbar(true);
+      })
+      .catch(error => {
+        console.error('Erro ao cadastrar equipamento:', error);
+      });
   };
 
   const handleCloseSnackbar = (event, reason) => {
@@ -64,66 +57,18 @@ const EquipmentRegistration = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="CRQ"
+                label="Modelo"
                 fullWidth
-                value={CRQNumber}
-                onChange={(e) => setCRQNumber(e.target.value)}
+                value={equipmentModel}
+                onChange={(e) => setEquipmentModel(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="E-mail"
+                label="Marca"
                 fullWidth
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DatePicker
-                  label="Data Admissão"
-                  value={generationDate}
-                  onChange={(date) => setGenerationDate(date)}
-                  renderInput={(params) => <TextField {...params} fullWidth />}
-                />
-              </LocalizationProvider>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                select
-                label="Tipo Usuário"
-                fullWidth
-                value={userType}
-                onChange={(e) => setUserType(e.target.value)}
-              >
-                <MenuItem value="Técnico">Técnico</MenuItem>
-                <MenuItem value="Aluno">Aluno</MenuItem>
-              </TextField>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="CPF"
-                fullWidth
-                value={cpf}
-                onChange={(e) => setCpf(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="Senha"
-                type="password"
-                fullWidth
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="Confirmar Senha"
-                type="password"
-                fullWidth
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={brandEquipment}
+                onChange={(e) => setBrandEquipment(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -142,7 +87,7 @@ const EquipmentRegistration = () => {
       </div>
       <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
         <MuiAlert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-          Usuário cadastrado com sucesso!
+          Equipamento cadastrado com sucesso!
         </MuiAlert>
       </Snackbar>
     </div>
